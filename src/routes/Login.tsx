@@ -50,7 +50,7 @@ export const Login = () => {
          <Style.Form onSubmit={onSubmit}>
             <Style.Input name="email" onChange={onChange} value={email} placeholder="Email" type="email" required />
             <Style.Input name="password" onChange={onChange} value={password} placeholder="Password" type="password" required />
-            <Style.Input type="submit" value={isLoading ? "Loading..." : "Log in"} />
+            <Style.Input type="submit" value={isLoading ? "Loading..." : "Log in"} className="log-in" />
          </Style.Form>
          {error !== "" ? <Style.Error>{error}</Style.Error> : null}
 
