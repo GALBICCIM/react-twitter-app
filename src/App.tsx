@@ -9,11 +9,16 @@ import LoadingScreen from "./components/loading-screen";
 import { auth } from "./firebase";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import styled from "styled-components";
+import { ProtectedRoute } from "./components/protected-route";
 
 const router = createBrowserRouter([
    {
       path: "/",
-      element: <Layout />,
+      element: (
+         <ProtectedRoute>
+            <Layout />
+         </ProtectedRoute>
+      ),
       children: [
          {
             path: "",

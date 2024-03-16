@@ -15,6 +15,7 @@ export const Title = styled.h1`
 
 export const Form = styled.form`
    margin-top: 50px;
+   margin-bottom: 15px;
    display: flex;
    flex-direction: column;
    gap: 10px;
@@ -37,4 +38,12 @@ export const Input = styled.input`
 export const Error = styled.span`
    font-weight: 600;
    color: tomato;
+`;
+
+export const Switcher = styled.span`
+   margin-top: 20px;
+   a {
+      color: #1d9bf0;
+      text-decoration-line: none;
+   }
 `;
