@@ -55,3 +55,9 @@ export const SubmitButton = styled.input`
       opacity: 0.8;
    }
 `;
+
+export const Error = styled.span`
+   font-weight: 600;
+   color: tomato;
+   margin-left: 200px;
+`;
