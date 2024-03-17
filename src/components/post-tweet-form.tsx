@@ -17,10 +17,15 @@ export const PostTweetForm = () => {
    const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { files } = event.target;
       if (files && files.length === 1) {
-         if (file?.size? > 100000) {
-            setError("The file is to large. (Less than 1MB")
+         if (file !== null && file.size > 1000000) {
+            setError("The file is to large. (Less than 1MB)");
+            setFile(null);
+            console.log("O");
+            return;
+         } else {
+            setFile(files[0]);
+            console.log("X");
          }
-         setFile(files[0]);
       }
    };
 
