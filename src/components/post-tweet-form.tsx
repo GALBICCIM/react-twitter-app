@@ -43,7 +43,7 @@ export const PostTweetForm = () => {
                setError("The file is to large. (Less than 1MB");
                return;
             } else {
-               const locationRef = ref(storage, `tweets/${user.uid}-${user.displayName}/${doc}`);
+               const locationRef = ref(storage, `tweets/${user.uid}/${doc.id}`);
                const result = await uploadBytes(locationRef, file);
                const url = await getDownloadURL(result.ref);
 
@@ -53,19 +53,17 @@ export const PostTweetForm = () => {
             }
          }
       } catch (e) {
-         setTweet("");
-         setError("");
          setFile(null);
-
          console.log(e);
       } finally {
+         setTweet("");
          setLoading(false);
       }
    };
 
    return (
       <Style.Form onSubmit={onSubmit}>
-         <Style.TextArea onChange={onChange} rows={5} maxLength={180} placeholder="What is happening?" required />
+         <Style.TextArea onChange={onChange} value={tweet} rows={5} maxLength={180} placeholder="What is happening?" required />
          <Style.AttachFileButton htmlFor="file">{file ? "Photo Added" : "Add photo"}</Style.AttachFileButton>
          <Style.AttachFileInput onChange={onFileChange} id="file" type="file" accept="image/*" />
          <Style.SubmitButton type="submit" value={isLoading ? "Posting..." : "Post Tweet"} />

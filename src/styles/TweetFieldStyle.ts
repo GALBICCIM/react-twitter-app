@@ -25,3 +25,16 @@ export const Photo = styled.img`
    height: 100px;
    border-radius: 15px;
 `;
+
+export const DeleteButton = styled.button`
+   cursor: pointer;
+   background-color: tomato;
+   color: white;
+   font-weight: 600;
+   border: 0;
+   font-size: 12px;
+   padding: 5px 10px;
+   text-transform: uppercase;
+   border-radius: 5px;
+   margin-top: 20px;
+`;

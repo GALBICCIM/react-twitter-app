@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { Wrapper } from "../styles/TimelineStyle";
+import styled from "styled-components";
 import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
-import { Tweets } from "./tweets";
+import { Tweet } from "./tweet";
 import { Unsubscribe } from "firebase/auth";
 
 export interface ITweet {
    id: string;
-   photo?: string;
+   photo?: string; // 사진은 선택사항
    tweet: string;
    userId: string;
    username: string;
    createAt: number;
 }
+
+const Wrapper = styled.div``;
 
 export const Timeline = () => {
    const [tweets, setTweets] = useState<ITweet[]>([]);
@@ -42,13 +44,13 @@ export const Timeline = () => {
       fetchTweets();
 
       return () => {
-         unsubscribe && unsubscribe();
+         unsubscribe && unsubscribe(); // 구독이 취소되었을 때 실행
       };
    }, []);
    return (
       <Wrapper>
          {tweets.map((tweet) => (
-            <Tweets key={tweet.id} {...tweet} />
+            <Tweet key={tweet.id} {...tweet} />
          ))}
       </Wrapper>
    );
