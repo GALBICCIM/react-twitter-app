@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/layout";
 import Home from "./routes/home";
-import Profile from "./routes/profile";
+import { Profile } from "./routes/profile";
 import CreateAccount from "./routes/create-account";
 import { Login } from "./routes/login";
 import { useEffect, useState } from "react";

@@ -20,7 +20,7 @@ export const Tweet = ({ username, photo, tweet, userId, id }: ITweet) => {
       setEditTweet(event.target.value);
    };
 
-   const onEditDone = async (event: React.FormEvent<HTMLFormElement>) => {
+   const onEditTweet = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
       try {
@@ -58,7 +58,7 @@ export const Tweet = ({ username, photo, tweet, userId, id }: ITweet) => {
          <Style.Columns>
             <Style.Username>{username}</Style.Username>
             {isEditing ? (
-               <Style.Form onSubmit={onEditDone}>
+               <Style.Form onSubmit={onEditTweet}>
                   <Style.EditTextArea onChange={onChange} value={editTweet} placeholder="Correct your writing here."></Style.EditTextArea>
                   <Style.EditSubmit type="submit" value="Done"></Style.EditSubmit>
                </Style.Form>
