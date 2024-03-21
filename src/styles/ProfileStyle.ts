@@ -7,6 +7,13 @@ export const Wrapper = styled.div`
    gap: 20px;
 `;
 
+export const Tweets = styled.div`
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+`;
+
 export const AvatarUpload = styled.label`
    cursor: pointer;
    width: 80px;
