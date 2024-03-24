@@ -57,7 +57,7 @@ export const Profile = () => {
    };
 
    const fetchTweets = async () => {
-      const tweetQuery = query(collection(db, "tweets"), where("userId", "==", user?.uid), orderBy("createAt", "desc"), limit(25));
+      const tweetQuery = query(collection(db, "tweets"), where("userId", "==", user?.uid), orderBy("createdAt", "desc"), limit(25));
       const snapshot = await getDocs(tweetQuery);
       const tweets = snapshot.docs.map((doc) => {
          const { tweet, createAt, userId, username, photo } = doc.data();
