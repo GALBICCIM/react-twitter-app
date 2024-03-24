@@ -9,8 +9,34 @@ import { Tweet } from "../components/tweet";
 
 export const Profile = () => {
    const user = auth.currentUser;
+   const [isEditing, setEditing] = useState(false);
    const [avatar, setAvatar] = useState(user?.photoURL);
    const [tweets, setTweets] = useState<ITweet[]>([]);
+   const [name, setName] = useState(user?.displayName);
+
+   const handleEditing = async () => {
+      setEditing((prev) => !prev);
+   };
+
+   const onNameChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setName(event.target.value);
+   };
+
+   const onNameSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      try {
+         if (!user) return;
+
+         await updateProfile(user, {
+            displayName: name,
+         });
+      } catch (e) {
+         console.log(e);
+      } finally {
+         setEditing((prev) => !prev);
+      }
+   };
 
    const onAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
       if (!user) return;
@@ -66,7 +92,23 @@ export const Profile = () => {
             )}
          </Style.AvatarUpload>
          <Style.AvatarInput onChange={onAvatarChange} id="avatar" type="file" accept="image/*" />
-         <Style.Name>{user?.displayName ?? "Anonymous"}</Style.Name>
+         {isEditing ? (
+            <Style.EditForm onSubmit={onNameSubmit}>
+               <Style.EditTextArea onChange={onNameChange} placeholder="Change your name...">
+                  {name}
+               </Style.EditTextArea>
+               <Style.EditSubmit id="editSubmit" type="submit"></Style.EditSubmit>
+            </Style.EditForm>
+         ) : (
+            <Style.Name>{user?.displayName ?? "Anonymous"}</Style.Name>
+         )}
+         {user?.displayName ? (
+            isEditing ? (
+               <Style.DoneLabel htmlFor="editSubmit">Done</Style.DoneLabel>
+            ) : (
+               <Style.EditProfileName onClick={handleEditing}>Edit Name</Style.EditProfileName>
+            )
+         ) : null}
          <Style.Tweets>
             {tweets.map((tweet) => (
                <Tweet key={tweet.id} {...tweet} />

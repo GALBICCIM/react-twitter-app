@@ -59,6 +59,19 @@ export const EditButton = styled.button`
    margin-top: 20px;
 `;
 
+export const DoneLabel = styled.label`
+   cursor: pointer;
+   width: 20%;
+   background-color: #5fff8c;
+   color: antiquewhite;
+   font-weight: 600;
+   border: 0;
+   font-size: 12px;
+   padding: 5px 10px;
+   text-transform: uppercase;
+   border-radius: 5px;
+`;
+
 export const EditTextArea = styled.textarea`
    display: grid;
    grid-template-columns: 3fr 1fr;
@@ -83,14 +96,5 @@ export const EditTextArea = styled.textarea`
 `;
 
 export const EditSubmit = styled.input`
-   cursor: pointer;
-   width: 20%;
-   background-color: #5fff8c;
-   color: antiquewhite;
-   font-weight: 600;
-   border: 0;
-   font-size: 12px;
-   padding: 5px 10px;
-   text-transform: uppercase;
-   border-radius: 5px;
+   display: none;
 `;

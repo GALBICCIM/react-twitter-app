@@ -60,7 +60,7 @@ export const Tweet = ({ username, photo, tweet, userId, id }: ITweet) => {
             {isEditing ? (
                <Style.Form onSubmit={onEditTweet}>
                   <Style.EditTextArea onChange={onChange} value={editTweet} placeholder="Correct your writing here."></Style.EditTextArea>
-                  <Style.EditSubmit type="submit" value="Done"></Style.EditSubmit>
+                  <Style.EditSubmit id="editSubmit" type="submit" value="Done"></Style.EditSubmit>
                </Style.Form>
             ) : (
                <Style.Payload>{tweet}</Style.Payload>
@@ -68,7 +68,7 @@ export const Tweet = ({ username, photo, tweet, userId, id }: ITweet) => {
             {user?.uid === userId ? (
                <Style.Columns>
                   <Style.DeleteButton onClick={onDelete}>Delete</Style.DeleteButton>
-                  {isEditing ? null : <Style.EditButton onClick={handleEditing}>Edit</Style.EditButton>}
+                  {isEditing ? <Style.DoneLabel htmlFor="editSubmit">Done</Style.DoneLabel> : <Style.EditButton onClick={handleEditing}>Edit</Style.EditButton>}
                </Style.Columns>
             ) : null}
          </Style.Columns>
