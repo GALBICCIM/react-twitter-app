@@ -3,13 +3,15 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
+require("dotenv").config();
+
 const firebaseConfig = {
-   apiKey: "AIzaSyDCw2S4xKuW9cy7irwb0qTQ3CO-k7kttEs",
-   authDomain: "nwitter-reloaded-d42f4.firebaseapp.com",
-   projectId: "nwitter-reloaded-d42f4",
-   storageBucket: "nwitter-reloaded-d42f4.appspot.com",
-   messagingSenderId: "912769767867",
-   appId: "1:912769767867:web:1f19d1c01c739daff4cc9e",
+	apiKey: process.env.API_KEY,
+	authDomain: process.env.AUTH_DOMAIN,
+	projectId: process.env.PROJECT_ID,
+	storageBucket: process.env.STORAGE_BUCKET,
+	messagingSenderId: process.env.MESSAGING_SENDER_ID,
+	appId: process.env.APP_ID,
 };
 
 // Firebase 초기화
